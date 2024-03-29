@@ -2,7 +2,14 @@
     @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
     *{margin: 0; padding: 0; border: 0;}
 body {background-color: rgb(104, 93, 93);}
-    header {padding: 32px; border-bottom: 1px solid black; background-color: rgb(97, 71, 71);}
+    header {padding: 25px; border-bottom: 1px solid black; background-color: rgb(97, 71, 71);}
     header div {text-align: center;}
-    header div a {color: white; font-size: 20px; line-height: 30px; margin: 0 16px; text-decoration: none; font-family: "Exo 2", sans-serif;}
-    header div a:hover{color:rgb(170, 146, 10); transition: color 700ms;}
+.links a {color: white; font-size: 20px; line-height: 30px; margin: 0 16px; text-decoration: none; font-family: "Exo 2", sans-serif;}
+.links a:hover{color:rgb(170, 146, 10); transition: color 700ms;}
+
+#box {text-align: center; padding: 32px;}
+#box img {border-radius: 50%; border: 5px solid rgb(170, 146, 10); margin-bottom: 32px;}
+#box h1 {font-size: 42px; line-height: 52px; font-weight: bold;}
+#box h2 {font-size: 24px; line-height: 34px; font-weight: normal; margin-top: 8px; opacity: 0.8;}
+
+:root {--subcor: rgb(170, 146, 10)}
