@@ -10,6 +10,6 @@ for (let card of cards){
 }
 
 document.querySelector ('.close_modal').addEventListener("click",function(){
-    modal_overlay.classList.remove('active')
+    modal_overlay.classList.remove("active")
     modal_overlay.querySelector("iframe").src ="";
 })
