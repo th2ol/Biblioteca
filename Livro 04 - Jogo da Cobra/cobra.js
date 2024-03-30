@@ -1,11 +1,48 @@
 const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 
+const score = document.querySelector(".score--value")
+const finalscore = document.querySelector(".final-score > span")
+const menu = document.querySelector(".menu-screen")
+const buttonplay = document.querySelector(".btn-play")
+
 const size = 30
 
-const cobra = [{x: 270, y: 240}]
+const inicialposition = {x: 270, y: 240}
+
+let cobra = [inicialposition]
+
+const incrementscore = () => {
+    score.innerText = +score.innerText + 10
+}
+
+const randomnumber = (min, max) => {
+    return Math.round(Math.random() * (max - min) + min)
+}
+
+const randomposition = () => {
+    const number = randomnumber(0, canvas.width - size)
+    return Math.round(number / 30) * 30
+}
+
+const food = {
+    x: randomposition(),
+    y: randomposition(),
+    color: "orange"
+}
 
 let direction, loopid
+
+const drawfood = () => {
+
+    const {x, y, color} = food
+
+    ctx.shadowColor = color
+    ctx.shadowBlur = 40
+    ctx.fillStyle = color
+    ctx.fillRect(x, y, size, size)
+    ctx.shadowBlur = 0
+}
 
 const drawcobra = () => {
     ctx.fillStyle = "#ddd"
@@ -61,20 +98,68 @@ const drawgrid = () => {
 
 }
 
+const checkfood = () => {
+    const head = cobra[cobra.length - 1]
+
+    if(head.x == food.x && head.y == food.y ) {
+        incrementscore()
+        cobra.push(head)
+
+        let x = randomposition()
+        let y = randomposition()
+        
+        while (cobra.find((position) => position.x == x && position.y == y)){
+             x = randomposition()
+             y = randomposition()
+        }
+        food.x = x
+        food.y = y
+        food.color = "orange"
+    }
+}
+
+const checkcolision = () => {
+    const head = cobra[cobra.length - 1]
+    const canvaslimit = canvas.width - size
+    const neckindex = cobra.length - 2
+    const wallcolision =
+        head.x < 0 || head.x > canvaslimit || head.y < 0 || head.y > canvaslimit
+
+    const selfcolision = cobra.find((position, index) => {
+        return index < neckindex && position.x == head.x && position.y == head.y
+
+    })
+
+    if(wallcolision || selfcolision) {
+        gameover()
+    }
+}
+
+const gameover = () => {
+    direction = undefined
+
+    menu.style.display = "flex"
+    finalscore.innerText = score.innerText
+    canvas.style.filter = "blur(8px)"
+}
+
 const gameloop = () => {
     clearInterval(loopid)
+
     ctx.clearRect(0, 0, 600, 600)
-
+    drawgrid()
+    drawfood()
     movecobra()
-
     drawcobra()
+    checkfood()
+    checkcolision()
 
     loopid = setTimeout(() => {
         gameloop()
     }, 300)
 }
 
-//gameloop()
+gameloop()
 
 document.addEventListener("keydown", ({key}) => {
 
@@ -84,4 +169,12 @@ document.addEventListener("keydown", ({key}) => {
     if (key == "ArrowUp" && direction != "down") {direction = "up"}
 
 
+})
+
+buttonplay.addEventListener("click", () => {
+    score.innerText = "00"
+    menu.style.display = "none"
+    canvas.style.filter = "none"
+
+    cobra = [inicialposition]
 })
