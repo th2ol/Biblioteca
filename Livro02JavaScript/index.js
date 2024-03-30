@@ -25,4 +25,6 @@ const salalais = 5
 const turnolais = "manhã"
 
 const lais = {endereco: "Rua Kennedy n4", notafinal: 9.6, sala: 5, turno: "manhã"}
-console.log(lais.notafinal);
+
+console.log(lais.notafinal)
+
