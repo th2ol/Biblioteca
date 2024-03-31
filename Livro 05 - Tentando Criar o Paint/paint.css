@@ -15,4 +15,5 @@ canvas {background-color: white; border-radius: 8px; box-shadow: 0 0 5px rgba(0,
 .button__size[data-size="10"] > span {height: 10px;}
 .button__size[data-size="20"] > span {height: 20px;}
 .button__size[data-size="30"] > span {height: 30px;}
+.button__size[data-size="100"] > span {height: 100px;}
 .active {background-color: #f2f2f2;}
