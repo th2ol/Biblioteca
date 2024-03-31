@@ -6,7 +6,7 @@
 body {background-color: rgb(104, 93, 93);}
 header {padding: 25px; border-bottom: 1px solid rgb(124, 11, 11); background-color: rgb(97, 71, 71);}
 header div {text-align: center;}
-.links a {color: white; font-size: 20px; line-height: 30px; margin: 0 16px; text-decoration: none; font-family: "Exo 2", sans-serif; margin-top: 0; ma}
+.links a {color: white; font-size: 20px; line-height: 30px; margin: 0 16px; text-decoration: none; font-family: "Exo 2", sans-serif; margin-top: 0; margin-bottom: 0;}
 .links a:hover{color:rgb(170, 146, 10); transition: color 700ms;}
 
 #box {text-align: center; padding: 32px;}
