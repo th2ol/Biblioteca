@@ -4,10 +4,13 @@ const ctx = canvas.getContext("2d")
 const score = document.querySelector(".score--value")
 const finalscore = document.querySelector(".final-score > span")
 const menu = document.querySelector(".menu-screen")
+const menu2 = document.querySelector(".menu-screen2")
 const buttonplay = document.querySelector(".btn-play")
+const buttonplay2 = document.querySelector(".btn-play2")
 
 const size = 30
 
+const final = {x: 300, y: 30}
 const inicialposition = {x: 300, y: 570}
 const p1 = {x: 0, y: 90}
 const p2 = {x: 0, y: 150}
@@ -338,11 +341,25 @@ const checkcolision = () => {
         gameover()
     }
 }
+const checkwin = () => {
+    const head = personagem[personagem.length - 1]
+    if (head.x == 0 && head.y == 0) {
+        youwin()
+    }
 
+}
 const gameover = () => {
     direction = undefined
 
     menu.style.display = "flex"
+    finalscore.innerText = score.innerText
+    canvas.style.filter = "blur(8px)"
+}
+
+const youwin = () => {
+    direction = undefined
+
+    menu2.style.display = "flex"
     finalscore.innerText = score.innerText
     canvas.style.filter = "blur(8px)"
 }
@@ -370,7 +387,7 @@ const gameloop = () => {
     movepersonagem()
     drawpersonagem()
     checkcolision()
-
+    checkwin()
     loopid = setTimeout(() => {
         gameloop()
     }, 300)
@@ -403,5 +420,19 @@ buttonplay.addEventListener("click", () => {
     parede7 = [p7, , {x: 30, y: 450}, {x: 60, y: 450}]
 })
 
+buttonplay2.addEventListener("click", () => {
+    score.innerText = "00"
+    menu2.style.display = "none"
+    canvas.style.filter = "none"
+
+    personagem = [inicialposition]
+    parede1 = [p1, , {x: 30, y: 90}, {x: 60, y: 90}]
+    parede2 = [p2, , {x: 30, y: 150}, {x: 60, y: 150}]
+    parede3 = [p3, , {x: 30, y: 210}, {x: 60, y: 210}]
+    parede4 = [p4, , {x: 30, y: 270}, {x: 60, y: 270}]
+    parede5 = [p5, , {x: 30, y: 330}, {x: 60, y: 330}]
+    parede6 = [p6, , {x: 30, y: 390}, {x: 60, y: 390}]
+    parede7 = [p7, , {x: 30, y: 450}, {x: 60, y: 450}]
+})
 
 //7 paredes com intervalos de 1 bloco deixar 3 linhas no final.
