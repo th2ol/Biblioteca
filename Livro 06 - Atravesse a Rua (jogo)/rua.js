@@ -175,61 +175,111 @@ const moveparede1 = () => {
     parede1.shift()
 
         parede1.push({x: par1.x + size, y: par1.y})
-    
+        const ponta1 = parede1[parede1.length - 1]
+        const canvaslimit = canvas.width - size
+        
+        const wallcolision1 =
+            ponta1.x < 0 || ponta1.x > canvaslimit
+
+        if(wallcolision1) {
+            parede1 = [p1, , {x: 30, y: 90}, {x: 60, y: 90}]
+        }
        
 }
 const moveparede2 = () => {
     if(!direction) return
 
-    const par1 = parede2[parede2.length - 1]
+    const par2 = parede2[parede2.length - 1]
 
     parede2.shift()
 
-        parede2.push({x: par1.x + size, y: par1.y})
-    
+        parede2.push({x: par2.x + size, y: par2.y})
+        const ponta2 = parede2[parede2.length - 1]
+        const canvaslimit = canvas.width - size
+        
+        const wallcolision2 =
+            ponta2.x < 0 || ponta2.x > canvaslimit
+
+        if(wallcolision2) {
+            parede2 = [p2, , {x: 30, y: 150}, {x: 60, y: 150}]
+        }
        
 }
 const moveparede3 = () => {
     if(!direction) return
 
-    const par1 = parede3[parede3.length - 1]
+    const par3 = parede3[parede3.length - 1]
 
     parede3.shift()
 
-        parede3.push({x: par1.x + size, y: par1.y})
-    
+        parede3.push({x: par3.x + size, y: par3.y})
+        const ponta3 = parede3[parede3.length - 1]
+        const canvaslimit = canvas.width - size
+        
+        const wallcolision3 =
+            ponta3.x < 0 || ponta3.x > canvaslimit
+
+        if(wallcolision3) {
+            parede3 = [p3, , {x: 30, y: 210}, {x: 60, y: 210}]
+        }
        
 }
 const moveparede4 = () => {
     if(!direction) return
 
-    const par1 = parede4[parede4.length - 1]
+    const par4 = parede4[parede4.length - 1]
 
     parede4.shift()
 
-        parede4.push({x: par1.x + size, y: par1.y})
-    
+        parede4.push({x: par4.x + size, y: par4.y})
+        const ponta4 = parede4[parede4.length - 1]
+        const canvaslimit = canvas.width - size
+        
+        const wallcolision4 =
+            ponta4.x < 0 || ponta4.x > canvaslimit
+
+        if(wallcolision4) {
+            parede4 = [p4, , {x: 30, y: 270}, {x: 60, y: 270}]
+        }
        
 }
 const moveparede5 = () => {
     if(!direction) return
 
-    const par1 = parede5[parede5.length - 1]
+    const par5 = parede5[parede5.length - 1]
 
     parede5.shift()
 
-        parede5.push({x: par1.x + size, y: par1.y})
+        parede5.push({x: par5.x + size, y: par5.y})
+        const ponta5 = parede5[parede5.length - 1]
+        const canvaslimit = canvas.width - size
+        
+        const wallcolision5 =
+            ponta5.x < 0 || ponta5.x > canvaslimit
+
+        if(wallcolision5) {
+            parede5 = [p5, , {x: 30, y: 330}, {x: 60, y: 330}]
+        }
     
        
 }
 const moveparede6 = () => {
     if(!direction) return
 
-    const par1 = parede6[parede6.length - 1]
+    const par6 = parede6[parede6.length - 1]
 
     parede6.shift()
 
-        parede6.push({x: par1.x + size, y: par1.y})
+        parede6.push({x: par6.x + size, y: par6.y})
+        const ponta6 = parede6[parede6.length - 1]
+        const canvaslimit = canvas.width - size
+        
+        const wallcolision6 =
+            ponta6.x < 0 || ponta6.x > canvaslimit
+
+        if(wallcolision6) {
+            parede6 = [p6, , {x: 30, y: 390}, {x: 60, y: 390}]
+        }
     
        
 }
@@ -241,21 +291,19 @@ const moveparede7 = () => {
     parede7.shift()
 
         parede7.push({x: par7.x + size, y: par7.y})
-
-
-}
-const colision7 = () => {
-    const ponta7 = parede7[parede7.length - 1]
+        const ponta7 = parede7[parede7.length - 1]
         const canvaslimit = canvas.width - size
         
         const wallcolision7 =
             ponta7.x < 0 || ponta7.x > canvaslimit
 
         if(wallcolision7) {
-            
-            parede7.push({x: ponta7.x - size, y: ponta7.y})
+            parede7 = [p7, , {x: 30, y: 450}, {x: 60, y: 450}]
         }
+
+
 }
+
 const drawgrid = () => {
     ctx.lineWidth = 1
     ctx.strokeStyle = "#191919"
@@ -346,6 +394,13 @@ buttonplay.addEventListener("click", () => {
     canvas.style.filter = "none"
 
     personagem = [inicialposition]
+    parede1 = [p1, , {x: 30, y: 90}, {x: 60, y: 90}]
+    parede2 = [p2, , {x: 30, y: 150}, {x: 60, y: 150}]
+    parede3 = [p3, , {x: 30, y: 210}, {x: 60, y: 210}]
+    parede4 = [p4, , {x: 30, y: 270}, {x: 60, y: 270}]
+    parede5 = [p5, , {x: 30, y: 330}, {x: 60, y: 330}]
+    parede6 = [p6, , {x: 30, y: 390}, {x: 60, y: 390}]
+    parede7 = [p7, , {x: 30, y: 450}, {x: 60, y: 450}]
 })
 
 
