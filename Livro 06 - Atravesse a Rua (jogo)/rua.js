@@ -1,7 +1,7 @@
 const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 
-const score = document.querySelector(".score--value")
+
 const finalscore = document.querySelector(".final-score > span")
 const menu = document.querySelector(".menu-screen")
 const menu2 = document.querySelector(".menu-screen2")
@@ -25,7 +25,7 @@ let parede3 = [p3, , {x: 30, y: 210}, {x: 60, y: 210}]
 let parede4 = [p4, , {x: 30, y: 270}, {x: 60, y: 270}]
 let parede5 = [p5, , {x: 30, y: 330}, {x: 60, y: 330}]
 let parede6 = [p6, , {x: 30, y: 390}, {x: 60, y: 390}]
-let parede7 = [p7, , {x: 30, y: 450}, {x: 60, y: 450}]
+let parede7 = [{x: 0, y: 450}, , {x: 30, y: 450}, {x: 60, y: 450}]
 let personagem = [inicialposition]
 
 const incrementscore = () => {
@@ -328,16 +328,49 @@ const drawgrid = () => {
 const checkcolision = () => {
     const head = personagem[personagem.length - 1]
     const canvaslimit = canvas.width - size
-    const neckindex = personagem.length - 2
+    
+    const par1 = parede1[parede1.length - 1]
+    const par2 = parede2[parede2.length - 1]
+    const par3 = parede3[parede3.length - 1]
+    const par4 = parede4[parede4.length - 1]
+    const par5 = parede5[parede5.length - 1]
+    const par6 = parede6[parede6.length - 1]
+    const par7 = parede7[parede7.length - 1]
+
     const wallcolision =
         head.x < 0 || head.x > canvaslimit || head.y < 0 || head.y > canvaslimit
 
-    const selfcolision = personagem.find((position, index) => {
-         return index < neckindex && position.x == head.x && position.y == head.y
-        
+
+    const colision1 = personagem.find((position) => {
+        return position.x == par1.x && position.y == par1.y
+
     })
-    
-    if(wallcolision || selfcolision) {
+    const colision2 = personagem.find((position) => {
+        return position.x == par2.x && position.y == par2.y
+
+    })
+    const colision3 = personagem.find((position) => {
+        return position.x == par3.x && position.y == par3.y
+
+    })
+    const colision4 = personagem.find((position) => {
+        return position.x == par4.x && position.y == par4.y
+
+    })
+    const colision5 = personagem.find((position) => {
+        return position.x == par5.x && position.y == par5.y
+
+    })
+    const colision6 = personagem.find((position) => {
+        return position.x == par6.x && position.y == par6.y
+
+    })
+    const colision7 = personagem.find((position) => {
+        return position.x == par7.x && position.y == par7.y
+
+    })
+
+    if(wallcolision || colision1 || colision2 || colision3 || colision4 || colision5 || colision6 || colision7) {
         gameover()
     }
 }
@@ -352,7 +385,6 @@ const gameover = () => {
     direction = undefined
 
     menu.style.display = "flex"
-    finalscore.innerText = score.innerText
     canvas.style.filter = "blur(8px)"
 }
 
@@ -360,7 +392,6 @@ const youwin = () => {
     direction = undefined
 
     menu2.style.display = "flex"
-    finalscore.innerText = score.innerText
     canvas.style.filter = "blur(8px)"
 }
 
@@ -406,7 +437,7 @@ document.addEventListener("keydown", ({key}) => {
 })
 
 buttonplay.addEventListener("click", () => {
-    score.innerText = "00"
+
     menu.style.display = "none"
     canvas.style.filter = "none"
 
@@ -421,7 +452,7 @@ buttonplay.addEventListener("click", () => {
 })
 
 buttonplay2.addEventListener("click", () => {
-    score.innerText = "00"
+    
     menu2.style.display = "none"
     canvas.style.filter = "none"
 
