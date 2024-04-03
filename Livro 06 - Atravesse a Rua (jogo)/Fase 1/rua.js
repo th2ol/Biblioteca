@@ -384,7 +384,7 @@ const checkwin = () => {
 
 }
 const gameover = () => {
-    direction = undefined
+    personagem = undefined
 
     menu.style.display = "flex"
     canvas.style.filter = "blur(8px)"
