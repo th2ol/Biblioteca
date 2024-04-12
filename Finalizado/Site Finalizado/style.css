@@ -34,7 +34,7 @@ iframe {width: 100%; height: 90%; position: absolute; top: 5%;}
 
 /*novidade*/
 
-:root {--cor-fundo: rgb(97, 71, 71); --cor-hover: rgb(167, 112, 112); --cor-primaria: rgb(178, 178, 199);}
+:root {--cor-fundo: rgb(97, 71, 71); --cor-hover: rgb(167, 112, 112); --cor-primaria: white;}
 
 .menu ul {list-style-type: none; padding: 0; border-bottom: 3px solid rgb(124, 11, 11);}
 
